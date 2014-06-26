@@ -1,0 +1,19 @@
+parameters:
+    vivait.widget.repository.class: Vivait\WidgetBundle\Entity\WidgetRepository
+    vivait.widget.provider.class: Vivait\WidgetBundle\Provider\WidgetProvider
+
+services:
+    vivait.widget.repository:
+        class: %vivait.widget.repository.class%
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments:
+            - 'VivaitWidgetBundle:Widget'
+
+    vivait.widget.provider:
+        class: %vivait.widget.provider.class%
+        arguments:
+            - @vivait.widget.repository
+            - @knp_menu.factory
+        tags:
+          - { name: knp_menu.provider }

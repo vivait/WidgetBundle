@@ -1,0 +1,3 @@
+vivait_widget_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: VivaitWidgetBundle:Default:index }
